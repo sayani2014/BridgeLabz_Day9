@@ -3,11 +3,21 @@
 wagePerHour=20
 fullDayHour=8
 partTime=4
+hoursPerDay=0
 read -p "Enter the total working hours: " totalWorkingHours
 read -p "Enter the total working days: " totalDays
 dailyWage=$((wagePerHour * 100 * 20))
 partTimeWage=$((wagePerHour * 100 * 20 / 2))
 employeeAttendance=$((RANDOM%2+1))
+
+workingHoursFulltime () {
+	hoursPerDay=$((totalWorkingHours / totalDays))
+	echo "Work hours per day: $hoursPerDay"
+}
+workingHoursParttime () {
+	hoursPerDay=$((totalWorkingHours / totalDays / 2))
+	echo "Work hours per day: $hoursPerDay"
+}
 
 case $employeeAttendance in
 	1)
@@ -15,6 +25,7 @@ case $employeeAttendance in
 		if(($totalWorkingHours>=100 || $totalDays==20))
 		then
 			echo "The employee's salary for the month is Rs.$dailyWage"
+			workingHoursFulltime
 		else
 			echo "Working limits not completed"
 		fi	
@@ -24,6 +35,7 @@ case $employeeAttendance in
 		if(($totalWorkingHours>=100 || $totalDays==20))
 		then
 			echo "The employee's salary for the month is Rs.$partTimeWage"
+			workingHoursParttime
 		else
 			echo "Working limits not completed"
 		fi			
