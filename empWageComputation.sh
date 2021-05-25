@@ -3,8 +3,8 @@
 wagePerHour=20
 fullDayHour=8
 partTime=4
-dailyWage=$((wagePerHour * fullDayHour))
-partTimeWage=$((wagePerHour * partTime))
+dailyWage=$((wagePerHour * fullDayHour * 20))
+partTimeWage=$((wagePerHour * partTime * 20))
 employeeAttendance=$((RANDOM%2+1))
 
 case $employeeAttendance in
